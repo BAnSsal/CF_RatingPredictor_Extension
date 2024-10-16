@@ -22,7 +22,7 @@ CORS(app)
 with open('scaler.pkl', 'rb') as f:
     scaler = pickle.load(f)
 
-with open('best_rf_model.pkl', 'rb') as f:
+with open('model.pkl', 'rb') as f:
     best_rf_model = pickle.load(f)
 
 @app.route('/predict', methods=['POST'])
