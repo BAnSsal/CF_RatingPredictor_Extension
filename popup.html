@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Codeforces Standings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        #fetchStandings {
+            background-color: #afa7ec; /* Dark purple color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        #fetchStandings:hover {
+            background-color: #3700b3; /* Darker shade on hover */
+        }
+
+        #fetchStandings:active {
+            background-color: #310093; /* Even darker when clicked */
+        }
+
+    </style>
+</head>
+<body>
+    <button id="fetchStandings">Fetch Standings</button>
+    <script src="popup.js"></script>
+</body>
+</html>
