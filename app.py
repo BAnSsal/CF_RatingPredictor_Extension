@@ -1,27 +1,24 @@
+import gdown
+import pickle
 from flask import Flask, request, jsonify
 import numpy as np
-import pickle
 from flask_cors import CORS
-import requests
 
 # Direct download link from Google Drive
-download_url = "https://drive.google.com/uc?export=download&id=1nNJsfwCgKXgcZU0s1XgkzN6uNf0SWIhh"
+file_id = "1nNJsfwCgKXgcZU0s1XgkzN6uNf0SWIhh"
+download_url = f"https://drive.google.com/uc?id={file_id}"
 
-# Download the pickle file from Google Drive
-response = requests.get(download_url)
-with open("model.pkl", "wb") as f:
-    f.write(response.content)
+# Use gdown to download the file
+gdown.download(download_url, "model.pkl", quiet=False)
 
-# Load the model from the downloaded file
+# Load the model from the downloaded pickle file
 with open("model.pkl", "rb") as f:
     model = pickle.load(f)
-
-# Now use the model for predictions or any processing
 
 app = Flask(__name__)
 CORS(app)
 
-# Load the scaler and model
+# Load other files as before
 with open('scaler.pkl', 'rb') as f:
     scaler = pickle.load(f)
 
@@ -31,7 +28,7 @@ with open('best_rf_model.pkl', 'rb') as f:
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # Get the participant data from the request
+        # Get participant data from request
         participant = request.json
 
         if not participant:
@@ -59,14 +56,14 @@ def predict():
             return jsonify({'error': f'Error processing data: {str(e)}'})
 
         # Convert to numpy array and scale
-        input_features = np.array([features])  # Only one participant
+        input_features = np.array([features])
         print(input_features)
         input_scaled = scaler.transform(input_features)
 
         # Predict rating change
         prediction = best_rf_model.predict(input_scaled)
         predicted_rating_change = prediction[0] if len(prediction) > 0 else None
-        
+
         print(f"Predicted rating change: {predicted_rating_change}")
 
         return jsonify({'predicted_rating_change': predicted_rating_change})
