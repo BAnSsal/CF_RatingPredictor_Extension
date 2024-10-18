@@ -131,5 +131,3 @@ The browser extension was developed using HTML, CSS, and JavaScript. Users can i
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
-
-*Note: Make sure to replace `./media/project-overview.png` with the actual path of the image you want to showcase at the top.*
