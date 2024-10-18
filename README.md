@@ -1,8 +1,6 @@
-Here's a detailed README file for your Codeforces Rating Predictor project:
-
----
-
 # Codeforces Rating Predictor
+
+![Project Overview](./media/project.jpg)
 
 A **Codeforces Rating Predictor** that estimates changes in user ratings after a contest. The project utilizes machine learning techniques to analyze performance and predict ratings based on contest standings. The prediction model is integrated into a browser extension for seamless interaction with the Codeforces platform.
 
@@ -134,4 +132,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Feel free to customize this README as per your project details or add any additional sections you think are necessary.
+*Note: Make sure to replace `./media/project-overview.png` with the actual path of the image you want to showcase at the top.*
